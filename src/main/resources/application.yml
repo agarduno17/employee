@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: employee-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/employeesdb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: factumex#2024
+    # Configuraciones de HikariCP
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 30000  # 30 segundos
+      max-lifetime: 1800000  # 30 minutos
+      connection-timeout: 20000  # 20 segundos
+      pool-name: HikariCP-MySQL
+      leak-detection-threshold: 2000  # 2 segundos
+
+  # ===============================
+  # JPA / HIBERNATE
+  # ===============================
+  jpa:
+    defer-datasource-initialization: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: false
+        format_sql: true
+
+flyway:
+  enabled: true
+  locations: classpath:db/migration
+  baseline-on-migrate: true

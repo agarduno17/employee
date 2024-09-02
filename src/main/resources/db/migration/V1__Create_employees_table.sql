@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS employees (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    salary DECIMAL(15, 2) NOT NULL CHECK (salary > 0),
+    hiring_date DATE NOT NULL
+);
